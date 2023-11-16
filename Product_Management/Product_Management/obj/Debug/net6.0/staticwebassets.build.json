@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7qbvrncY8CjF+6lUfC41oWKbZuMd9AbeC1EFUaKjXcM=",
+  "Hash": "/GMSAJ2dAF469K2jJro5R97F3ICQ8RoP5gLqDXW+6BU=",
   "Source": "Product_Management",
   "BasePath": "_content/Product_Management",
   "Mode": "Default",
@@ -68,6 +68,40 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
+      "Identity": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\Datatable\\jquery.dataTable.min.js",
+      "SourceId": "Product_Management",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\",
+      "BasePath": "_content/Product_Management",
+      "RelativePath": "Datatable/jquery.dataTable.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Datatable\\jquery.dataTable.min.js"
+    },
+    {
+      "Identity": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\Datatable\\jquery.dataTables.js",
+      "SourceId": "Product_Management",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\",
+      "BasePath": "_content/Product_Management",
+      "RelativePath": "Datatable/jquery.dataTables.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Datatable\\jquery.dataTables.js"
+    },
+    {
       "Identity": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\favicon.ico",
       "SourceId": "Product_Management",
       "SourceType": "Discovered",
@@ -83,6 +117,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\js\\datatable_file.js",
+      "SourceId": "Product_Management",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\",
+      "BasePath": "_content/Product_Management",
+      "RelativePath": "js/datatable_file.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\datatable_file.js"
     },
     {
       "Identity": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\js\\site.js",

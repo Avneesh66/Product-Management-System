@@ -5,12 +5,24 @@
       "PackagePath": "staticwebassets\\Product_Management.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\Datatable\\jquery.dataTable.min.js",
+      "PackagePath": "staticwebassets\\Datatable\\jquery.dataTable.min.js"
+    },
+    {
+      "Id": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\Datatable\\jquery.dataTables.js",
+      "PackagePath": "staticwebassets\\Datatable\\jquery.dataTables.js"
+    },
+    {
       "Id": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\js\\datatable_file.js",
+      "PackagePath": "staticwebassets\\js\\datatable_file.js"
     },
     {
       "Id": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\js\\site.js",

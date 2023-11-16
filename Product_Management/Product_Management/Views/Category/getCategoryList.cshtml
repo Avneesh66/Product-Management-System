@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Product_Management.Models.Domain.Category>
+@{
+    ViewData["Title"] = "getCategoryList";
+}
+
+<div class="container">
+    <div class="row">
+        @if (TempData["msgError"] != null)
+        {
+            <div class="alert alert-danger notification text-center">
+                @TempData["msgError"]
+            </div>
+        } 
+        @if (TempData["msgSuccess"] != null)
+        {
+            <div class="alert alert-danger notification text-center">
+                @TempData["msgSuccess"]
+            </div>
+        }
+        <div class="col-10 offset-1">
+            <div class="float-end">
+                <a class="btn btn-sm btn-primary p-1 m-1" asp-controller="Category" asp-action="AddCategory">Add Category</a>
+            </div>
+            <table class="table table-hover table-striped table-bordered">
+                <thead class="text-center bg-dark text-light">
+                    <tr>
+                        <th>CategoryId</th>
+                        <td>Name</td>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var d in Model)
+                    {
+
+                        <tr class="text-center">
+                            <td>@d.Id</td>
+                            <td>@d.Name</td>
+                            <td>
+                                <a class="btn btn-sm btn-primary m-1" asp-controller="Category" asp-action="">Edit</a> |
+                                <a class="btn btn-sm btn-danger m-1" asp-controller="Category" asp-action="">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

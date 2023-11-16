@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Product_Management.Models.Domain.Product>
+@{
+    ViewData["Title"] = "getProductList";
+}
+
+<div class="container">
+    <div class="row">
+        @if (TempData["msgError"] != null)
+        {
+            <div class="alert alert-danger notification text-center">
+                @TempData["msgError"]
+            </div>
+        }
+        @if (TempData["msgSuccess"] != null)
+        {
+            <div class="alert alert-danger notification text-center">
+                @TempData["msgSuccess"]
+            </div>
+        }
+        <div class="col-10 offset-1">
+            <div class="float-end">
+                <a class="btn btn-sm btn-primary p-1 m-1" asp-controller="Product" asp-action="AddProduct">Add Product</a>
+            </div>
+            <table class="table table-hover table-striped table-bordered">
+                <thead class="text-center bg-dark text-light">
+                    <tr>
+                        <th>Id</th>
+                        <td>Name</td>
+                        <th>Description</th>
+                        <th>Purchage_Price</th>
+                        <th>Sale_Price</th>
+                        <th>Category_Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var d in Model)
+                    {
+
+                        <tr class="text-center">
+                            <td>@d.Id</td>
+                            <td>@d.Name</td>
+                            <td>@d.Description</td>
+                            <td>@d.Purchage_Price</td>
+                            <th>@d.Sale_Price</th>
+                            <td>@d.Category_Name</td>
+                            <td>
+                                <a class="btn btn-sm btn-primary m-1" asp-controller="Category" asp-action="">Edit</a> |
+                                <a class="btn btn-sm btn-danger m-1" asp-controller="Category" asp-action="">Delete</a> 
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

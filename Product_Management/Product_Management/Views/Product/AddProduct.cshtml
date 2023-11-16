@@ -1,0 +1,38 @@
+﻿@model Product_Management.Models.Domain.Product
+@{
+    ViewData["Title"] = "AddProduct";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3 border border-3 rounded rounded-3 p-4">
+            <h3 class="text-info p-2 m-1">Add Product</h3> <form method="post" asp-action="AddProduct">
+                <div class="form-check">
+                    <label asp-for="Name"></label>
+                    <input type="text" asp-for="Name" class="form-control" placeholder="Enter Name" />
+                </div>
+                <div class="form-check">
+                    <label asp-for="Description"></label>
+                    <input type="text" asp-for="Description" class="form-control" placeholder="Enter Description" />
+                </div>
+                <div class="form-check">
+                    <label asp-for="Purchage_Price"></label>
+                    <input type="text" asp-for="Purchage_Price" class="form-control" placeholder="Enter Purchage_Price" />
+                </div>
+                <div class="form-check">
+                    <label asp-for="Sale_Price"></label>
+                    <input type="text" asp-for="Sale_Price" class="form-control" placeholder="Enter Sale_Price" />
+                </div> 
+                <div class="form-check">
+                    <label asp-for="Category_Name"></label>
+                    <input type="text" asp-for="Category_Name" class="form-control" placeholder="Enter Category_Name" />
+                </div>
+               
+                <div>
+                    <input type="submit" class="btn btn-sm btn-primary p-2 m-2 float-end" value="Save" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -25,6 +25,8 @@ namespace Product_Management
             builder.Services.ConfigureApplicationCookie(op=>op.LoginPath= "/UserAuthentication/Login");
 
             builder.Services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped<IProductService, ProductService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
