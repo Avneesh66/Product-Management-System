@@ -61,5 +61,90 @@ namespace Product_Management.Controllers
            
 
         }
+
+        public async Task<IActionResult> EditProduct(int id)
+        {
+
+            Product product = new Product();
+            try
+            {
+
+                if (id == 0)
+                {
+                    return BadRequest();
+                }
+                else
+                {
+                    product = await _product.getProductById(id);
+                    if (product == null)
+                    {
+                        return NotFound();
+                    }
+
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return View(product);
+
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> EditProduct(Product product)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View(product);
+                }
+                else
+                {
+                    bool status = await _product.UpdateProduct(product);
+                    if (status)
+                    {
+                        TempData["msgSuccess"] = "Your Record has been Successfully updated !";
+                    }
+                    else
+                    {
+                        TempData["msgError"] = "Record has not been updated !";
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return RedirectToAction("getProductList", "Product");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            try
+            {
+                bool isDeleted = await _product.DeleteProduct(id);
+
+                if (isDeleted)
+                {
+                    TempData["msgSuccess"] = "Product deleted successfully";
+                }
+                else
+                {
+                    TempData["msgError"] = "Product not found";
+
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return RedirectToAction("getProductList", "Product");
+        }
     }
 }

@@ -1,15 +1,16 @@
 ﻿@model Product_Management.Models.Domain.Product
 @{
-    ViewData["Title"] = "AddProduct";
+    ViewData["Title"] = "EditProduct";
 }
 
 <div class="container">
     <div class="row">
         <div class="col-6 offset-3 border border-3 rounded rounded-3 p-4">
-            <h3 class="text-info p-2 m-1">Add Product</h3> <form method="post" asp-action="AddProduct">
+            <h3 class="text-info p-2 m-1">Update Product</h3> <form method="post" asp-action="EditProduct">
                 <div class="form-check">
                     <label asp-for="Name"></label>
                     <input type="text" asp-for="Name" class="form-control" placeholder="Enter Name" />
+                    <input type="hidden" asp-for="Id" />
                     <span class="text-danger" asp-validation-for="Name"></span>
                 </div>
                 <div class="form-check">
@@ -32,8 +33,9 @@
                     <input type="text" asp-for="Category_Name" class="form-control" placeholder="Enter Category_Name" />
                     <span class="text-danger" asp-validation-for="Category_Name"></span>
                 </div>
+
                 <div>
-                    <input type="submit" class="btn btn-sm btn-primary p-2 m-2 float-end" value="Save" />
+                    <input type="submit" class="btn btn-sm btn-primary p-2 m-2 float-end" value="Update" />
                 </div>
             </form>
         </div>
@@ -44,3 +46,4 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+

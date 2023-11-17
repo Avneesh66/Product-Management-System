@@ -37,8 +37,8 @@
                             <td>@d.Id</td>
                             <td>@d.Name</td>
                             <td>
-                                <a class="btn btn-sm btn-primary m-1" asp-controller="Category" asp-action="">Edit</a> |
-                                <a class="btn btn-sm btn-danger m-1" asp-controller="Category" asp-action="">Delete</a>
+                                <a class="btn btn-sm btn-primary m-1" asp-controller="Category" asp-action="EditCategory" asp-route-id="@d.Id">Edit</a> |
+                                <a class="btn btn-sm btn-danger m-1" asp-controller="Category" asp-action="DeleteCategory" asp-route-id="@d.Id">Delete</a>
                             </td>
                         </tr>
                     }

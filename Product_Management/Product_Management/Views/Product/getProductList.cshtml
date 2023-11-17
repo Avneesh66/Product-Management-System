@@ -45,8 +45,8 @@
                             <th>@d.Sale_Price</th>
                             <td>@d.Category_Name</td>
                             <td>
-                                <a class="btn btn-sm btn-primary m-1" asp-controller="Category" asp-action="">Edit</a> |
-                                <a class="btn btn-sm btn-danger m-1" asp-controller="Category" asp-action="">Delete</a> 
+                                <a class="btn btn-sm btn-primary m-1" asp-controller="Product" asp-action="EditProduct" asp-route-id="@d.Id">Edit</a> |
+                                <a class="btn btn-sm btn-danger m-1" asp-controller="Product" asp-action="DeleteProduct" asp-route-id="@d.Id">Delete</a>
                             </td>
                         </tr>
                     }

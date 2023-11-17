@@ -13,13 +13,13 @@ namespace Product_Management.Repositories.Implementation
             Product_Context = context;
 
         }
-        public async Task<IEnumerable<Product>> getProduct()
+        public async Task<IEnumerable<Models.Domain.Product>> getProduct()
         {
             var data = await Product_Context.TblProducts.ToListAsync();
             return data;
         }
 
-        public async Task<int> AddProduct(Product product)
+        public async Task<int> AddProduct(Models.Domain.Product product)
         {
             if (product != null)
             {
@@ -30,6 +30,40 @@ namespace Product_Management.Repositories.Implementation
 
             return 0; // Return a default value or throw an exception in case of a null category
 
+        }
+
+        public async Task<Models.Domain.Product> getProductById(int id)
+        {
+            var data = await Product_Context.TblProducts.Where(e => e.Id == id).FirstOrDefaultAsync();
+            return data;
+        }
+
+        public async Task<bool> UpdateProduct(Models.Domain.Product product)
+        {
+
+            bool status = false;
+            if (product != null)
+            {
+                Product_Context.TblProducts.Update(product);
+                await Product_Context.SaveChangesAsync();
+                status = true;
+            }
+            return status;
+        }
+
+        public async Task<bool> DeleteProduct(int productId)
+        {
+
+            var productToDelete = await Product_Context.TblProducts.FindAsync(productId);
+
+            if (productToDelete != null)
+            {
+                Product_Context.TblProducts.Remove(productToDelete);
+                await Product_Context.SaveChangesAsync();
+                return true;
+            }
+
+            return false; // Category with the given ID not found
         }
 
     }

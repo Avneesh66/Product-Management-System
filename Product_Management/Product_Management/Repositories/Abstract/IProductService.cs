@@ -6,5 +6,11 @@ namespace Product_Management.Repositories.Abstract
     {
         Task<IEnumerable<Product>> getProduct();
         Task<int> AddProduct(Product product);
+        Task<Product> getProductById(int id);
+
+        Task<bool> UpdateProduct(Product product);
+
+        Task<bool> DeleteProduct(int id);
     }
+
 }
