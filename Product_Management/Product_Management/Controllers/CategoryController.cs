@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Product_Management.Migrations;
-using Product_Management.Models.Domain;
+using Product_Management.Models.DTO;
 using Product_Management.Repositories.Abstract;
-using Product_Management.Repositories.Implementation;
-using Category = Product_Management.Models.Domain.Category;
 
 namespace Product_Management.Controllers
 {
@@ -16,7 +13,7 @@ namespace Product_Management.Controllers
         }
         public async Task<IActionResult> getCategoryList()
         {
-            var data = await _category.getCategory();
+            var data = await _category.GetCategories();
             return View(data);
         }
         public IActionResult AddCategory()
@@ -26,19 +23,19 @@ namespace Product_Management.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCategory(Category category)
+        public async Task<IActionResult> AddCategory(CategoryModel model)
         {
 
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    return View(category);
+                    return View(model);
                 }
                 else
                 {
-                    await _category.AddCategory(category);
-                    if (category.Id == 0)
+                    int id = await _category.AddCategory(model);
+                    if (id == 0)
                     {
                         TempData["msgError"] = "Record not saved";
                     }
@@ -59,7 +56,7 @@ namespace Product_Management.Controllers
         public async Task<IActionResult> EditCategory(int id)
         {
 
-            Category category = new Category();
+            CategoryModel category = new CategoryModel();
             try
             { 
                
@@ -89,17 +86,17 @@ namespace Product_Management.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> EditCategory(Category category)
+        public async Task<IActionResult> EditCategory(CategoryModel model)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    return View(category);
+                    return View(model);
                 }
                 else
                 {
-                    bool status = await _category.UpdateCategory(category);
+                    bool status = await _category.UpdateCategory(model);
                     if (status)
                     {
                         TempData["msgSuccess"] = "Your Record has been Successfully updated !";

@@ -68,9 +68,9 @@ namespace Product_Management.Controllers
         {
             var model = new RegistrationModel
             {
-                UserName = "admin1",
-                Name = "Roky",
-                Email = "roky@gmail.com",
+                UserName = "avneesh",
+                Name = "avneesh",
+                Email = "aavi@gmail.com",
                 Password = "Admin@123"
 
             };

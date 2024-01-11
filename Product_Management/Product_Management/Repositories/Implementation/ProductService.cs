@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Product_Management.Data;
 using Product_Management.Models.Domain;
+using Product_Management.Models.DTO;
 using Product_Management.Repositories.Abstract;
 
 namespace Product_Management.Repositories.Implementation
@@ -13,38 +14,76 @@ namespace Product_Management.Repositories.Implementation
             Product_Context = context;
 
         }
-        public async Task<IEnumerable<Models.Domain.Product>> getProduct()
+        public async Task<IEnumerable<ProductModel>> getProduct()
         {
-            var data = await Product_Context.TblProducts.ToListAsync();
+            var data = await Product_Context.Products.Select(model => new ProductModel
+            {
+                Id = model.Id,
+                Name = model.Name,
+                Description = model.Description,
+                Purchage_Price = model.PurchagePrice,
+                Sale_Price = model.SalePrice,
+                ImageUrl = model.ImageUrl
+            }).ToListAsync();
             return data;
         }
 
-        public async Task<int> AddProduct(Models.Domain.Product product)
+        public async Task<int> AddProduct(ProductModel model)
         {
-            if (product != null)
+            if (model != null)
             {
-                await Product_Context.TblProducts.AddAsync(product); // Use AddAsync for asynchronous operations
+                var data = new Product()
+                {
+                    Name = model.Name,
+                    Description = model.Description,
+                    PurchagePrice = model.Purchage_Price,
+                    SalePrice = model.Sale_Price,
+                    CategoryId = model.CategoryId,
+                    ImageUrl=model.ImageUrl
+
+                };
+
+                await Product_Context.Products.AddAsync(data); // Use AddAsync for asynchronous operations
                 await Product_Context.SaveChangesAsync();
-                return product.Id; // Use category.Id instead of Category.Id
+                return data.Id;
             }
 
-            return 0; // Return a default value or throw an exception in case of a null category
+            return 0; 
 
         }
 
-        public async Task<Models.Domain.Product> getProductById(int id)
+        public async Task<ProductModel> getProductById(int id)
         {
-            var data = await Product_Context.TblProducts.Where(e => e.Id == id).FirstOrDefaultAsync();
+            var data = await Product_Context.Products.Where(e => e.Id == id).Select(model => new ProductModel
+            {
+                Id = model.Id,
+                Name = model.Name,
+                Description=model.Description,
+                Purchage_Price=model.PurchagePrice,
+                Sale_Price = model.SalePrice,
+                CategoryId = model.CategoryId,
+                ImageUrl = model.ImageUrl
+            }).FirstOrDefaultAsync();
             return data;
         }
 
-        public async Task<bool> UpdateProduct(Models.Domain.Product product)
+        public async Task<bool> UpdateProduct(ProductModel model)
         {
 
             bool status = false;
-            if (product != null)
+            if (model != null)
             {
-                Product_Context.TblProducts.Update(product);
+                var data = new Product()
+                {
+                    Id = model.Id,
+                    Name = model.Name,
+                    Description = model.Description,
+                    PurchagePrice = model.Purchage_Price,
+                    SalePrice = model.Sale_Price,
+                    CategoryId = model.CategoryId,
+                    ImageUrl = model.ImageUrl
+                };
+                Product_Context.Products.Update(data);
                 await Product_Context.SaveChangesAsync();
                 status = true;
             }
@@ -54,16 +93,16 @@ namespace Product_Management.Repositories.Implementation
         public async Task<bool> DeleteProduct(int productId)
         {
 
-            var productToDelete = await Product_Context.TblProducts.FindAsync(productId);
+            var productToDelete = await Product_Context.Products.FindAsync(productId);
 
             if (productToDelete != null)
             {
-                Product_Context.TblProducts.Remove(productToDelete);
+                Product_Context.Products.Remove(productToDelete);
                 await Product_Context.SaveChangesAsync();
                 return true;
             }
 
-            return false; // Category with the given ID not found
+            return false;
         }
 
     }

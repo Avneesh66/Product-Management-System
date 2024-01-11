@@ -1,4 +1,4 @@
-﻿@model Product_Management.Models.Domain.Product
+﻿@model Product_Management.Models.DTO.ProductModel
 @{
     ViewData["Title"] = "EditProduct";
 }
@@ -29,11 +29,17 @@
                     <span class="text-danger" asp-validation-for="Sale_Price"></span>
                 </div>
                 <div class="form-check">
-                    <label asp-for="Category_Name"></label>
-                    <input type="text" asp-for="Category_Name" class="form-control" placeholder="Enter Category_Name" />
-                    <span class="text-danger" asp-validation-for="Category_Name"></span>
+                    <label asp-for="CategoryId"></label>
+                    @Html.DropDownList("CategoryId", ViewBag.Categories as SelectList, "Select Category", new { @class = "form-control" })
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
                 </div>
-
+                <div class="form-check">
+                    <label asp-for="Image" class="control-label"></label>
+                    <div class="custom-file">
+                        <input asp-for="Image" class="custom-file-input">
+                    </div>
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
                 <div>
                     <input type="submit" class="btn btn-sm btn-primary p-2 m-2 float-end" value="Update" />
                 </div>

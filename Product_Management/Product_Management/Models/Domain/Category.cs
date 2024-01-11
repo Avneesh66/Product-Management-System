@@ -6,11 +6,10 @@ namespace Product_Management.Models.Domain
     {
         [Key]
         public int Id { get; set; }
-        [Required(ErrorMessage ="Please Enter Name")]
         public string? Name { get; set; }
 
         // Navigation property for products related to this category
-       // public ICollection<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; }
 
     }
 }

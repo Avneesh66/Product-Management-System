@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Product_Management.Models.Domain;
-using Product_Management.Models.DTO;
 
 namespace Product_Management.Data
 {
@@ -13,7 +12,7 @@ namespace Product_Management.Data
         }   
 
         public DbSet<Category>? Categories { get; set; }
-        public DbSet<Product>? TblProducts { get; set; }
+        public DbSet<Product>? Products { get; set; }
 
 
     }

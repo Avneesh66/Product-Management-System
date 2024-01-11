@@ -13,6 +13,22 @@
       "PackagePath": "staticwebassets\\Datatable\\jquery.dataTables.js"
     },
     {
+      "Id": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\Product\\Photos\\1a0cb947-0292-4a9f-90ea-7f16c218c903_Iphone12.jpg",
+      "PackagePath": "staticwebassets\\Product\\Photos\\1a0cb947-0292-4a9f-90ea-7f16c218c903_Iphone12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\Product\\Photos\\b37da529-f13f-4012-9e5c-906435f54853_Image_Avneesh.jpeg",
+      "PackagePath": "staticwebassets\\Product\\Photos\\b37da529-f13f-4012-9e5c-906435f54853_Image_Avneesh.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\Product\\Photos\\ed48ab6a-e41e-4b41-a787-0cb24b60bde0_WoodLandShoes.png",
+      "PackagePath": "staticwebassets\\Product\\Photos\\ed48ab6a-e41e-4b41-a787-0cb24b60bde0_WoodLandShoes.png"
+    },
+    {
+      "Id": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\Product\\Photos\\f62e4a3f-da63-4f48-9371-13613e0dc40a_DSLR.jpg",
+      "PackagePath": "staticwebassets\\Product\\Photos\\f62e4a3f-da63-4f48-9371-13613e0dc40a_DSLR.jpg"
+    },
+    {
       "Id": "C:\\Users\\avaneeshs\\Desktop\\Demo Project\\Product-Management-System\\Product_Management\\Product_Management\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

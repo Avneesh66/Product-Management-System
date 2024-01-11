@@ -9,6 +9,10 @@ namespace Product_Management.Models.DTO
     {
         [Key]
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Name")]
         public string? Name { get; set; }
+
+        public List<ProductModel>?Products { get; set; }
     }
 }

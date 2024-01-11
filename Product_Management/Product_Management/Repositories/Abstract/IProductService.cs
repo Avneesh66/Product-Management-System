@@ -1,14 +1,14 @@
-﻿using Product_Management.Models.Domain;
+﻿using Product_Management.Models.DTO;
 
 namespace Product_Management.Repositories.Abstract
 {
     public interface IProductService
     {
-        Task<IEnumerable<Product>> getProduct();
-        Task<int> AddProduct(Product product);
-        Task<Product> getProductById(int id);
+        Task<IEnumerable<ProductModel>> getProduct();
+        Task<int> AddProduct(ProductModel product);
+        Task<ProductModel> getProductById(int id);
 
-        Task<bool> UpdateProduct(Product product);
+        Task<bool> UpdateProduct(ProductModel product);
 
         Task<bool> DeleteProduct(int id);
     }

@@ -1,20 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Product_Management.Data;
-using Product_Management.Migrations;
 using Product_Management.Models.Domain;
 using Product_Management.Repositories.Abstract;
-using Product = Product_Management.Models.Domain.Product;
+using Product_Management.Models.DTO;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Product_Management.Controllers
 {
     public class ProductController : Controller
     {
         public readonly IProductService _product;
-        public ProductController(IProductService product)
+        public readonly ICategoryService _category;
+        public readonly IWebHostEnvironment _webHostEnvironment;
+
+        public ProductController(IProductService product, ICategoryService category, IWebHostEnvironment webHostEnvironment)
         {
             _product = product;
-           
+            _category = category;
+            _webHostEnvironment = webHostEnvironment;
         }
         public async Task<IActionResult> getProductList()
         {
@@ -22,14 +26,16 @@ namespace Product_Management.Controllers
 
             return View(data);
         }
-        public IActionResult AddProduct()
+        public async Task<IActionResult> AddProduct()
         {
-
+            var data = await _category.GetCategories();
+            ViewBag.Categories = new SelectList(data, "Id", "Name");
             return View();
         }
 
+
         [HttpPost]
-        public async Task<IActionResult> AddProduct(Product product)
+        public async Task<IActionResult> AddProduct(ProductModel model)
         {
             // Assuming you have a DbContext or data service to fetch categories.
 
@@ -37,12 +43,22 @@ namespace Product_Management.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    return View(product);
+                    return View(model);
                 }
                 else
                 {
-                    await _product.AddProduct(product);
-                    if (product.Id == 0)
+                    if (model.Image != null)
+                    {
+                        string folder = "Product/Photos/";
+                        folder += Guid.NewGuid().ToString() + '_' + model.Image.FileName;
+                        // Update the model with the saved image URL
+                        model.ImageUrl = "/" + folder;
+                        string filePath = Path.Combine(_webHostEnvironment.WebRootPath, folder);
+                        await model.Image.CopyToAsync(new FileStream(filePath, FileMode.Create));
+                       
+                    }
+                    int id = await _product.AddProduct(model);
+                    if (id == 0)
                     {
                         TempData["msgError"] = "Record not saved";
                     }
@@ -65,7 +81,7 @@ namespace Product_Management.Controllers
         public async Task<IActionResult> EditProduct(int id)
         {
 
-            Product product = new Product();
+            ProductModel product = new ProductModel();
             try
             {
 
@@ -81,6 +97,11 @@ namespace Product_Management.Controllers
                         return NotFound();
                     }
 
+                    // Retrieve categories for dropdown list
+                    var data = await _category.GetCategories();
+                    ViewBag.Categories = new SelectList(data, "Id", "Name", product.CategoryId);
+
+
                 }
 
             }
@@ -95,7 +116,7 @@ namespace Product_Management.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> EditProduct(Product product)
+        public async Task<IActionResult> EditProduct(ProductModel product)
         {
             try
             {

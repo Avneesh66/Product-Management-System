@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Product_Management.Data;
 using Product_Management.Models.Domain;
+using Product_Management.Models.DTO;
 using Product_Management.Repositories.Abstract;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Product_Management.Repositories.Implementation
 {
@@ -14,38 +16,55 @@ namespace Product_Management.Repositories.Implementation
             _context = context;
 
         }
-        public async Task<IEnumerable<Models.Domain.Category>> getCategory()
+        public async Task<IEnumerable<CategoryModel>> GetCategories()
         {
-            var data=await _context.Categories.ToListAsync();
+            // Use meaningful method names; it's better to use the plural form for collection retrieval
+            var data = await _context.Categories.Select(model => new CategoryModel {
+                Id = model.Id,
+                Name=model.Name
+             }).ToListAsync();
+
             return data;
         }
 
-        public async Task<int> AddCategory(Models.Domain.Category category)
+        public async Task<int> AddCategory(CategoryModel model)
         {
-            if (category != null)
+            if (model != null)
             {
-                await _context.Categories.AddAsync(category); // Use AddAsync for asynchronous operations
+                var data = new Category()
+                {
+                   Name=model.Name
+                };
+                await _context.Categories.AddAsync(data); // Use AddAsync for asynchronous operations
                 await _context.SaveChangesAsync();
-                return category.Id; // Use category.Id instead of Category.Id
+                return data.Id;
             }
 
             return 0; // Return a default value or throw an exception in case of a null category
 
         }
 
-        public async Task<Models.Domain.Category> getCategoryById(int id)
+        public async Task<CategoryModel> getCategoryById(int id)
         {
-            var data =await  _context.Categories.Where(e => e.Id == id).FirstOrDefaultAsync();
+            var data =await _context.Categories.Where(e => e.Id == id).Select(model => new CategoryModel
+            {
+                Id = model.Id,
+                Name = model.Name
+            }).FirstOrDefaultAsync();
             return data;
         }
 
-        public async Task<bool> UpdateCategory(Models.Domain.Category category)
+        public async Task<bool> UpdateCategory(CategoryModel model)
         {
            
             bool status = false;
-            if (category != null)
+            if (model != null)
             {
-                _context.Categories.Update(category);
+                var data = new Category()
+                {
+                    Name = model.Name
+                };
+                _context.Categories.Update(data);
                 await _context.SaveChangesAsync();
                 status = true;
             }

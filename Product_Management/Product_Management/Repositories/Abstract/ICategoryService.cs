@@ -1,16 +1,17 @@
-﻿using Product_Management.Models.Domain;
+﻿using Product_Management.Models.DTO;
 
 namespace Product_Management.Repositories.Abstract
 {
     public interface ICategoryService
     {
-        Task<IEnumerable<Category>> getCategory();
-        Task<int> AddCategory(Category category);
+        Task<IEnumerable<CategoryModel>> GetCategories();
+        Task<int> AddCategory(CategoryModel model);
 
-        Task<Category> getCategoryById(int id);
+        Task<CategoryModel> getCategoryById(int id);
 
-        Task<bool> UpdateCategory(Category category);
+        Task<bool> UpdateCategory(CategoryModel model);
 
         Task<bool> DeleteCategory(int id);
+        
     }
 }
